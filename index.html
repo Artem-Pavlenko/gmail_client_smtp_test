@@ -27,7 +27,7 @@
     form.addEventListener("submit", (e) => {
         e.preventDefault()
 
-        axios.post("http://localhost:3000/sendMessage", {
+        axios.post("https://node-js-smtp-server.herokuapp.com//sendMessage", {
             name: form.querySelector("#name").value,
             email: form.querySelector("#email").value,
             text: form.querySelector("#text").value
