@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<body>
+<form action="" id="contact-form">
+    <div>
+        <input type="text" placeholder="your name" id="name" value="arte">
+    </div>
+    <div>
+        <input type="text" placeholder="your email" id="email" value="gmail">
+    </div>
+    <div>
+        <textarea placeholder="please write what you want..." id="text">bla bla</textarea>
+    </div>
+    <div>
+        <input type="submit" value="send">
+    </div>
+</form>
+</body>
+<script>
+    let form = document.querySelector("#contact-form")
+    form.addEventListener("submit", (e) => {
+        e.preventDefault()
+
+        axios.post("http://localhost:3000/sendMessage", {
+            name: form.querySelector("#name").value,
+            email: form.querySelector("#email").value,
+            text: form.querySelector("#text").value
+        })
+        .then(() => {
+            alert('message send')
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    })
+</script>
+</html>
